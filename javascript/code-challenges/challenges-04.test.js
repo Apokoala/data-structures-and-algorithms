@@ -22,9 +22,11 @@ function lower(str) {
 }
 
 const updateAnimal = (arr, callback) => {
+
   const newAnimal = [];
   arr.forEach(element => newAnimal.push(callback(element)));
   return newAnimal;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,10 +48,11 @@ HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbers = (arr) => {
+
   arr.sort(function(a,b){
     return a-b;
   });
-  // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,6 +62,7 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 
 HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 ------------------------------------------------------------------------------------------------ */
+
 
 const sortBackwards = (arr) => arr.sort((a,b) => b-a);
 // I dont know why this doesnt work ...w3schools has this under sort number in descending order
@@ -75,6 +79,7 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => arr.sort();
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -88,11 +93,9 @@ Here is an example of the input:
 ];
 ------------------------------------------------------------------------------------------------ */
 
+
 const sortByPrice = (arr) => arr.sort((a,b) => a.price - b.price);
 
-// arr.sort(function(a,b){
-//   return a-b;
-// });
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -103,12 +106,14 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
+
   arr.sort(function(a,b){
     return a.toLowerCase().localeCompare(b.toLowerCase());
   });
   // Solution code here...
 };
 //oops i didnt need to do this one
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
