@@ -88,7 +88,7 @@ Here is an example of the input:
 ];
 ------------------------------------------------------------------------------------------------ */
 
-const sortByPrice = (arr) => arr.sort((a,b) => a.price - b.price);
+const sortByPrice = (arr) => arr.sort((a,b) => b.price - b.price);
 
 // arr.sort(function(a,b){
 //   return a-b;
