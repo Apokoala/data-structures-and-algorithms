@@ -33,10 +33,12 @@ CHALLENGE 2
 Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index.
 ------------------------------------------------------------------------------------------------ */
 
-const removeThree = (idx, arr) =>{
+const removeThree = (idx, arr) => {
   arr.splice(idx, 3);
   return arr;
 };
+
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -59,10 +61,13 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
+  let string= [...str, ''];
   let result = [];
-  str.forEach(element => element.slice(0,));
+  string.forEach((element, idx) => result.push(str.slice(idx)));
   return result;
 };
+
+//FUCK FOR LOOPS!
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -73,9 +78,9 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  const newArray = [...arr];
+  return newArray;
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -120,7 +125,11 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  recipe.ingredients.forEach((element => {
+    let firstSlice = element.slice(element.indexOf(' ') + 1);
+    let secondSlice = firstSlice.slice(firstSlice.indexOf(' ') + 1);
+    result.push(secondSlice);
+  }));
   return result;
 };
 
@@ -132,11 +141,15 @@ Write a function named splitFoods that uses split to produce the same output as 
 You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
-const splitFoods = (recipe) => {
-  let result = [];
-  // Solution code here...
-  return result;
-};
+// const splitFoods = (recipe) => {
+//   let result = [];
+//   recipe.ingredients.forEach((element =>{
+//     let seperateWords = element.split(' ');
+//     let chooseWords = seperateWords.splice(0,2);
+//     result.push(chooseWords);
+//   }));
+//   return result;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
