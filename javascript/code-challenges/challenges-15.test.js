@@ -10,9 +10,7 @@ Write a function named screenForNames that takes in an array of strings and uses
 
 ------------------------------------------------------------------------------------------------ */
 
-const screenForNames = (arr) => {
-  // Solution code here...
-}
+const screenForNames = (arr) => arr.filter(str => str.match(/(^Mr. \w+)|(^Mrs. \w+)|(^Dr. \w+)|(^Ms. \w+)/g));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -22,10 +20,7 @@ Write a function named toTitleCase that takes in an array of strings and returns
 For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyver'].
 ------------------------------------------------------------------------------------------------ */
 
-const toTitleCase = (arr) => {
-  // Solution code here...
-};
-
+const toTitleCase = (arr) => arr.map(element => element.charAt(0).toUpperCase() + element.substr(1));
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -97,9 +92,7 @@ let starWarsData = [{
   gender: 'n/a'
 }];
 
-let biggerThanLuke = (arr) => {
-  // Solution code here...
-};
+let biggerThanLuke = (arr) => arr.filter(element => element.mass > 77).map(obj => obj.name).join(' - ');
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -115,12 +108,10 @@ Here is an example of the input:
 This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBy = (property, arr) => {
-  // Solution code here...
-};
+const sortBy = (property, arr) => arr.sort((a, b) => (a[property] > b[property]) ? 1 : ((b[property] > a[property]) ? -1 : 0));
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 
+CHALLENGE 5
 
 Write a function that determines if a given URL is secure, beginning with https://
 
@@ -131,12 +122,10 @@ http://www.insecure.com returns false because the URL is not secure
 https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
-const isSecure = (url) => {
-  // Solution code here...
-};
+const isSecure = (url) => url.includes('https://');
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 
+CHALLENGE 6
 
 Write a function named detectTicTacToeWin that accepts a two-dimensional array of strings. Each string is guaranteed to be either "X", "O" or an empty string. Your function should check to see if any row, column, or either diagonal direction has three matching "X" or "O" symbols (non-empty strings), three-in-a-line.
 
@@ -155,8 +144,31 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  const flattened = board.flatMap(el => el);
+  let checkWin = (index, entries) => {
+    let player = entries[index];
+    if (player === '') return false;
+    if (entries[index + 3] === player && entries[index + 3 + 3] === player) { // Vertical test
+      return true;
+    }
+    if (index % 3 === 0 && entries[index + 1] === player && entries[index + 1 + 1] === player) {
+      return true;
+    }
+    if (entries[index + 4] === player && entries[index + 4 + 4] === player) { // Diagonal test left -> right
+      return true;
+    }
+    if (index % 3 === 0 && entries[index - 2] === player && entries[index - 2 - 2] === player) { // Diagonal right -> left
+      return true;
+    }
+    return false;
+  };
+
+  for (let i = 0; i < flattened.length; i++) {
+    return(checkWin(i, flattened));
+  }
+
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
