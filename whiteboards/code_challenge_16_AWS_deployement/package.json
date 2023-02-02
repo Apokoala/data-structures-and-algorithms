@@ -1,0 +1,7 @@
+{
+    "name": "simple-api",
+    "version": 1.0
+    "dependecies": {
+        "express": "^4.0.0"
+    }
+}
