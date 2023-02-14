@@ -1,12 +1,20 @@
-function maxTrees(tree) {
-    let maxValue = 0;
-
-    function traverse(node){
-        if (!node) return;
-        maxValue = Math.max(maxValue, node.value);
-        traverse(node.left);
-        traverse(node.right);
+class BinaryTree {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
     }
-    traverse(root);
-    return maxValue;
+
+    findMaximumValue() {
+        let maxValue = this.value;
+        if (this.left) {
+            maxValue = Math.max(maxValue, this.left.findMaximumValue());
+        }
+        if (this.right) {
+            maxValue = Math.max(maxValue, this.right.findMaximumValue());
+        }
+        return maxValue;
+    }
 }
+
+module.exports = { BinaryTree }
