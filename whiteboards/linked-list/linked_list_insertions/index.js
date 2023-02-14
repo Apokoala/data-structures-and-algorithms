@@ -11,7 +11,7 @@ class Node {
       this.tail = null;
       this.length = 0;
     }
-//
+
     append(value) {
       const newNode = new Node(value);
       if (!this.head) {
